@@ -106,7 +106,7 @@ export default class BlockPartyServer {
                 this.roomsById[roomToCreate] = {
                     id: roomToCreate,
                     createdByUserId: player.name,
-                    name: player.name + " room " + _.random(1, 1000),
+                    name: "Room " + _.keys(this.roomsById).length,
                     blocks: []
                 };
 

@@ -1,0 +1,64 @@
+{
+    "extends": "tslint:recommended",
+    "rules": {
+        "class-name": false,
+        "comment-format": [
+            false,
+            "check-space"
+        ],
+        "no-trailing-whitespace": false,
+        "no-var-keyword": false,
+        "no-reference": false,
+        "max-line-length": [
+            false,
+            120
+        ],
+        "trailing-comma": false,
+        "no-consecutive-blank-lines": false,
+        "object-literal-sort-keys": false,
+        "member-ordering": [false, { "order": "fields-first" }],
+        "one-variable-per-declaration": false,
+        "member-access": false,
+        "jsdoc-format": false,
+        "no-namespace": false,
+        "arrow-parens": false,
+        "ordered-imports": false,
+        "object-literal-shorthand": false,
+        "array-type": false,
+        "max-classes-per-file": false,
+        "no-unused-variable": [true],
+        "quotemark": [
+            false,
+            "double"
+        ],
+        "triple-equals": [
+            true,
+            "allow-null-check"
+        ],
+        "align": [
+            false
+        ],
+        "indent": [
+            false,
+            "spaces"
+        ],
+        "one-line": [
+            false,
+            "check-open-brace",
+            "check-whitespace"
+        ],
+        "typedef-whitespace": [
+            false
+        ],
+        "whitespace": [
+            false,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-separator",
+            "check-type",
+            "check-typecast"
+        ]
+    }
+}

@@ -27,7 +27,7 @@ export default class BlockRenderer {
     private currentBlocksDrawn: IBlock[];
 
     private readonly blockSize = 50;
-    private readonly gridSize = 500;
+    private readonly gridSize = 600;
 
     constructor(private canvas: HTMLCanvasElement, private colorInHex: string = "#aa0000", private handleNewBlock?: (block: IBlock) => void, private handleBlockRemoval?: (blockId: string) => void) {
         this.container = document.createElement('div');
@@ -96,13 +96,14 @@ export default class BlockRenderer {
             geometry.vertices.push(new threejs.Vector3(i, 0, this.gridSize));
         }
 
-        const material = new threejs.LineBasicMaterial({ color: 0x000000, opacity: 0.2, transparent: true });
+        const material = new threejs.LineBasicMaterial({ color: 0x000000, opacity: 0.15, transparent: true });
         const line = new threejs.LineSegments(geometry, material);
         this.scene.add(line);
 
         this.raycaster = new threejs.Raycaster();
         this.mouse = new threejs.Vector2();
-        const bufferGeometry = new threejs.PlaneBufferGeometry(1000, 1000);
+        
+        const bufferGeometry = new threejs.PlaneBufferGeometry(this.gridSize * 2, this.gridSize * 2);
         bufferGeometry.rotateX(- Math.PI / 2);
         this.plane = new threejs.Mesh(bufferGeometry, new threejs.MeshBasicMaterial({ visible: false }));
         this.scene.add(this.plane);
@@ -123,6 +124,7 @@ export default class BlockRenderer {
 
         this.orbitControl = new threejs.OrbitControls(this.camera, this.canvas);
         this.orbitControl.mouseButtons.ORBIT = threejs.MOUSE.RIGHT;
+        this.orbitControl.addEventListener("change", () => { this.render(); });
 
         this.canvas.addEventListener('mousemove', (event) => this.onCanvasMouseMove(event));
         this.canvas.addEventListener('mousedown', (event) => this.onCanvasMouseDown(event));

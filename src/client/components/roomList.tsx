@@ -6,7 +6,7 @@ import * as storeContracts from "../store/contracts";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { Card, CardMedia, CardTitle } from 'material-ui/Card';
-import { IRoom, IRoomWithBlocks} from  "../../common/contracts";
+import { IRoom, IRoomWithBlocks } from "../../common/contracts";
 import BlockRenderer from '../blockRenderer';
 
 export default class RoomList extends React.Component<{
@@ -33,6 +33,9 @@ export default class RoomList extends React.Component<{
         const blocker = new BlockRenderer(this.canvasToDrawOn);
 
         const updateBlocks = () => {
+            // TODO - This is a bit of a hack.
+            // While the room list is open, we fetch an object that has the blocks for every room.
+            // An idea might be to join some special room-channel when opening this component - and that channel gets every block-update, regardless of room.
             fetch("/roomblocks").then(response => {
                 response.json().then((roomData: {
                     [roomId: string]: IRoomWithBlocks
@@ -127,8 +130,8 @@ class RoomPreview extends React.Component<IRoomPreviewParams, { imageData: strin
     }
 
     public render() {
-        return <li style={{ minWidth: "200px", height: "250px", margin: "5px", display: "inline-block" }}>
-            <a href={"#"} onClick={this.handleClick.bind(this)}>
+        return <li style={{ minWidth: "200px", height: "250px", margin: "5px", display: "inline-block" }} className={"highlight-on-hover"} >
+            <a href={"#"} onClick={this.handleClick.bind(this)} style={{ textDecoration: "none" }}>
                 <Card>
                     <CardMedia>
                         <img src={this.state.imageData} style={{ height: "150px", width: "200px" }} />

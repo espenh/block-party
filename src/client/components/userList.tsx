@@ -26,6 +26,10 @@ export default class UserList extends React.Component<{ store: storeContracts.IB
                 return "Unknown";
             }
 
+            if(!roomsById[state.rooms.roomByUserId[userId]]){
+                return "Unknown";
+            }
+
             return roomsById[state.rooms.roomByUserId[userId]].name;
         };
 

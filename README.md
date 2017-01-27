@@ -1,5 +1,9 @@
 # block-party
-Quick cooperative block building prototype.
+Cooperative block building prototype with support for multiple rooms.
+
+![alt tag](https://github.com/espenh/block-party/blob/master/docs/screenshots/main.png)
+
+![alt tag](https://github.com/espenh/block-party/blob/master/docs/screenshots/rooms.png)
 
 ## How to run
 Build the client:

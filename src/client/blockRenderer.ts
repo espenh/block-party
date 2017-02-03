@@ -1,14 +1,12 @@
 import * as _ from "lodash";
 import * as threejs from "three";
 // threejs.OrbitControls is a separate import. Get it and stick it on the threejs module where the type definitions think it is.
-import * as x from "three-orbit-controls";
-(threejs as any).OrbitControls = x(threejs);
+import * as orbitControlFunkyClassFactory from "three-orbit-controls";
+(threejs as any).OrbitControls = orbitControlFunkyClassFactory(threejs);
 
 import { IBlock } from '../common/contracts';
 
 export default class BlockRenderer {
-
-    private container: HTMLElement;
 
     private camera: threejs.PerspectiveCamera;
     private scene: threejs.Scene;
@@ -18,7 +16,6 @@ export default class BlockRenderer {
     private mouse: threejs.Vector2;
     private raycaster: threejs.Raycaster;
     private rollOverMesh: threejs.Mesh;
-    private rollOverMaterial: threejs.MeshBasicMaterial;
     private cubeGeo: threejs.BoxGeometry;
     private cubeMaterial: threejs.MeshLambertMaterial;
 
@@ -30,9 +27,6 @@ export default class BlockRenderer {
     private readonly gridSize = 600;
 
     constructor(private canvas: HTMLCanvasElement, private colorInHex: string = "#aa0000", private handleNewBlock?: (block: IBlock) => void, private handleBlockRemoval?: (blockId: string) => void) {
-        this.container = document.createElement('div');
-        document.body.appendChild(this.container);
-
         this.init();
         this.render();
     }
@@ -78,8 +72,7 @@ export default class BlockRenderer {
 
         // Ghost cube.
         const rollOverGeo = new threejs.BoxGeometry(this.blockSize, this.blockSize, this.blockSize);
-        this.rollOverMaterial = new threejs.MeshBasicMaterial({ color: 0xff0000, opacity: 0.5, transparent: true });
-        this.rollOverMesh = new threejs.Mesh(rollOverGeo, this.rollOverMaterial);
+        this.rollOverMesh = new threejs.Mesh(rollOverGeo, new threejs.MeshBasicMaterial({ color: 0xff0000, opacity: 0.5, transparent: true }));
 
         this.scene.add(this.rollOverMesh);
 
@@ -102,7 +95,7 @@ export default class BlockRenderer {
 
         this.raycaster = new threejs.Raycaster();
         this.mouse = new threejs.Vector2();
-        
+
         const bufferGeometry = new threejs.PlaneBufferGeometry(this.gridSize * 2, this.gridSize * 2);
         bufferGeometry.rotateX(- Math.PI / 2);
         this.plane = new threejs.Mesh(bufferGeometry, new threejs.MeshBasicMaterial({ visible: false }));

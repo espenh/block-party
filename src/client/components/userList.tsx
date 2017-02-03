@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as _ from "lodash";
 
-import * as storeContracts from "../store/contracts";
 import Avatar from 'material-ui/Avatar';
-import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
+import { List, ListItem } from 'material-ui/List';
+
+import { IBlockPartyStore } from "../store/contracts";
 import { IRoom } from "../../common/contracts";
 
-
-export default class UserList extends React.Component<{ store: storeContracts.IBlockPartyStore, onOwnUserClicked: () => void }, undefined> {
+export default class UserList extends React.Component<{ store: IBlockPartyStore, onOwnUserClicked: () => void }, undefined> {
 
     public render() {
         const state = this.props.store.getState();
@@ -26,7 +26,7 @@ export default class UserList extends React.Component<{ store: storeContracts.IB
                 return "Unknown";
             }
 
-            if(!roomsById[state.rooms.roomByUserId[userId]]){
+            if (!roomsById[state.rooms.roomByUserId[userId]]) {
                 return "Unknown";
             }
 

@@ -1,9 +1,5 @@
 import { IBlock } from "../../common/contracts";
 
-export interface ICurrentRoom {
-    roomId: string;
-}
-
 export interface IClientCommunicator {
     addNewBlockToRoom: (roomId: string, block: IBlock) => void;
     joinRoom: (roomId: string) => void;

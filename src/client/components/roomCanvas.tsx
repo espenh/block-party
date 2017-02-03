@@ -2,13 +2,13 @@ import * as React from "react";
 import Paper from 'material-ui/Paper';
 
 import RoomCanvasToolbar from "./roomCanvasToolbar";
-import * as storeContracts from "../store/contracts";
-import * as commonContracts from "../common/contracts";
+import { IBlockPartyStore } from "../store/contracts";
+import { IClientCommunicator } from "../common/contracts";
 import BlockRenderer from '../blockRenderer';
 
 export class RoomCanvas extends React.Component<{
-    store: storeContracts.IBlockPartyStore,
-    communicator: commonContracts.IClientCommunicator
+    store: IBlockPartyStore,
+    communicator: IClientCommunicator
 }, any> {
 
     private canvas: HTMLCanvasElement;
@@ -57,8 +57,8 @@ export class RoomCanvas extends React.Component<{
 }
 
 export class RoomCanvasWithToolbar extends React.Component<{
-    store: storeContracts.IBlockPartyStore,
-    communicator: commonContracts.IClientCommunicator
+    store: IBlockPartyStore,
+    communicator: IClientCommunicator
 }, any> {
 
     // TODO - Move paper to parent component.

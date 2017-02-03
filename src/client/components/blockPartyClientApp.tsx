@@ -1,27 +1,24 @@
 import * as _ from "lodash";
 import * as React from "react";
 
-import * as storeContracts from "../store/contracts";
-import { RoomCanvasWithToolbar } from "./roomCanvas";
-import RaisedButton from 'material-ui/RaisedButton';
-
-import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import Paper from 'material-ui/Paper';
 import Dialog from 'material-ui/Dialog';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
+
+import { IBlockPartyStore } from "../store/contracts";
+import { RoomCanvasWithToolbar } from "./roomCanvas";
+import { IClientCommunicator } from "../common/contracts";
 
 import * as actionCreators from '../store/actionCreators';
-import { IClientCommunicator } from "../common/contracts";
+
 import AppHeader from './appHeader';
 import UserList from './userList';
 import RoomList from './roomList';
 import UserOptions from './userOptions';
 
-interface IBlockPartyRoomHandler {
-    joinRoom: (roomId: string) => Promise<void>;
-}
-
 export class BlockPartyClientApp extends React.Component<{
-    store: storeContracts.IBlockPartyStore,
+    store: IBlockPartyStore,
     communicator: IClientCommunicator
 }, undefined> {
 

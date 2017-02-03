@@ -1,16 +1,16 @@
 import * as React from "react";
 import * as _ from "lodash";
 
-import * as storeContracts from "../store/contracts";
-
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import { Card, CardMedia, CardTitle } from 'material-ui/Card';
-import { IRoom, IRoomWithBlocks } from "../../common/contracts";
+
 import BlockRenderer from '../blockRenderer';
+import { IBlockPartyStore } from "../store/contracts";
+import { IRoom, IRoomWithBlocks } from "../../common/contracts";
 
 export default class RoomList extends React.Component<{
-    store: storeContracts.IBlockPartyStore,
+    store: IBlockPartyStore,
     onRoomSelected: (roomId: string) => void,
     onNewRoomCreateRequest: () => void
 }, undefined> {
@@ -100,7 +100,6 @@ export default class RoomList extends React.Component<{
 }
 
 interface IRoomPreviewParams {
-    store?: storeContracts.IBlockPartyStore;
     room: IRoom;
     onRoomSelected?: (roomId: string) => void;
 }

@@ -1,7 +1,7 @@
 import * as _ from "lodash";
-import { IRoomAction, IRoomState, IOwnUserOptions, IUIState, IUIAction, IOptionsAction, IUserAction } from "./contracts";
-import { ICurrentRoom } from "../common/contracts";
+
 import { IUser, IRoom } from "../../common/contracts";
+import { IRoomAction, IRoomState, IOwnUserOptions, IUIState, IUIAction, IOptionsAction, IUserAction } from "./contracts";
 
 const exampleRoom: IRoom = {
     id: "someid",
@@ -28,14 +28,6 @@ export const roomStateReducer = (roomState: IRoomState = { rooms: [exampleRoom],
             return { ...roomState, roomByUserId: action.roomByUserId };
         default:
             return roomState;
-    }
-};
-
-export const currentSceneReducer = (sceneState: ICurrentRoom = { roomId: "NA" }, action: IUIAction): ICurrentRoom => {
-    switch (action.type) {
-
-        default:
-            return sceneState;
     }
 };
 

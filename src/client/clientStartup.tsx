@@ -16,7 +16,6 @@ injectTapEventPlugin();
 
 const blockPartyAppReducer = combineReducers<IBlockPartyStoreState>({
     rooms: reducers.roomStateReducer,
-    currentScene: reducers.currentSceneReducer,
     users: reducers.usersReducer,
     ui: reducers.uiReducer,
     options: reducers.optionsReducer

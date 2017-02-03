@@ -1,15 +1,16 @@
 import * as sio from "socket.io-client";
+
 import { IRoom, IBlock, IUser } from '../common/contracts';
-import * as commonContracts from './common/contracts';
-import * as storeContracts from './store/contracts';
+import { IClientCommunicator } from './common/contracts';
+import { IBlockPartyStore } from './store/contracts';
 import * as actionCreators from './store/actionCreators';
 
-export default class ClientCommunicator implements commonContracts.IClientCommunicator {
+export default class ClientCommunicator implements IClientCommunicator {
 
     private readonly thing = sio();
     private readonly socket = this.thing.connect();
 
-    constructor(private store: storeContracts.IBlockPartyStore) {
+    constructor(private store: IBlockPartyStore) {
 
         this.socket.on('room-joined', (data: { roomId: string }) => {
             this.store.dispatch(actionCreators.rooms.setCurrentRoom(data.roomId));

@@ -1,22 +1,21 @@
 import * as React from "react";
+import * as tinycolor from "tinycolor2";
 
 import RaisedButton from 'material-ui/RaisedButton';
-import { grey600, fullWhite } from 'material-ui/styles/colors';
 import SquareIcon from 'material-ui/svg-icons/av/stop';
-
 import Popover from 'material-ui/Popover';
+import Snackbar from 'material-ui/Snackbar';
 
 import { GithubPicker } from 'react-color';
+import { grey600, fullWhite } from 'material-ui/styles/colors';
 
-import Snackbar from 'material-ui/Snackbar';
-import * as tinycolor from "tinycolor2";
-import * as storeContracts from "../store/contracts";
+import { IBlockPartyStore } from "../store/contracts";
+import { IClientCommunicator } from "../common/contracts";
 import * as actionCreators from '../store/actionCreators';
-import * as commonContracts from "../common/contracts";
 
 export default class RoomCanvasToolbar extends React.Component<{
-    store: storeContracts.IBlockPartyStore,
-    communicator: commonContracts.IClientCommunicator
+    store: IBlockPartyStore,
+    communicator: IClientCommunicator
 }, any> {
 
     private readonly style = {
@@ -78,6 +77,8 @@ export default class RoomCanvasToolbar extends React.Component<{
     public render() {
         const state = this.props.store.getState();
         const color = state.options.blockColor;
+        
+        // Find a background color that works with the brightness of the block color.
         const backgroundColor = tinycolor(color).getBrightness() > 230 ? grey600 : fullWhite;
 
         return <div style={{ position: "absolute", left: "10px", top: "10px" }} >

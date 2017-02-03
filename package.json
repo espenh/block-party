@@ -1,8 +1,7 @@
 {
   "name": "block-party",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Cooperative block building",
   "scripts": {
     "tsc": "tsc",
     "webpack": "webpack",
@@ -20,9 +19,9 @@
     "@types/express": "^4.0.35",
     "@types/lodash": "^4.14.50",
     "@types/material-ui": "^0.16.48",
-    "@types/react": "^15.0.4",
+    "@types/react": "15.0.4",
     "@types/react-color": "^2.3.1",
-    "@types/react-dom": "^0.14.21",
+    "@types/react-dom": "0.14.21",
     "@types/react-tap-event-plugin": "0.0.30",
     "@types/redux": "^3.6.31",
     "@types/socket.io": "^1.4.27",
@@ -34,10 +33,10 @@
     "source-map-loader": "^0.1.6",
     "tslint": "4.4.2",
     "typescript": "^2.1.5",
-    "webpack": "^2.2.0"
+    "webpack": "^2.2.1"
   },
   "dependencies": {
-    "express": "^4.14.0",
+    "express": "^4.14.1",
     "lodash": "^4.17.4",
     "material-ui": "^0.16.7",
     "react": "^15.4.2",

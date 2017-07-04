@@ -5,6 +5,7 @@ Cooperative block building prototype with support for multiple rooms.
 
 ![alt tag](https://github.com/espenh/block-party/blob/master/docs/screenshots/rooms.png)
 
+
 ## How to run
 Initial setup:
 ```
@@ -22,5 +23,6 @@ npm run buildstart-server
 ```
 Navigate to http://localhost:8080
 
-##Demo
+
+## Demo
 See running version at: https://block-party.azurewebsites.net
